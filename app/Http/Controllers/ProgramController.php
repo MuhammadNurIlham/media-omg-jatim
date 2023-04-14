@@ -48,7 +48,7 @@ class ProgramController extends Controller
             'title' => $request->title,
             'content' => $request->content,
             'image' => $request->image,
-            // 'user_id' => Auth::user()->id,
+            'user_id' => Auth::user()->id,
             'category_id' => $request->category_id,
         ]);
 
@@ -83,21 +83,5 @@ class ProgramController extends Controller
             'message' => 'Data Program berhasil dihapus',
             'data' => new NewsDetailResource($program->loadMissing(['writer:id,name', 'category:id,name']))
         ];
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Program $program)
-    {
-        //
     }
 }

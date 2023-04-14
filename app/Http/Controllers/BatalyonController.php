@@ -58,7 +58,10 @@ class BatalyonController extends Controller
         $batalyon = Batalyon::findOrFail($id);
         $batalyon->update($request->all());
 
-        return response()->json($batalyon);
+        return response()->json([
+            'message' => 'Update Data Batalyon Finished!',
+            'data' => ($batalyon)
+        ], 200);
     }
 
     /**

@@ -83,9 +83,6 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
         $news->delete();
 
-        // return (new NewsDetailResource($news->loadMissing(['writer:id,name', 'category:id,name'])))
-        //     ->additional(['message' => 'Berita berhasil dihapus.']);
-
         return [
             'message' => 'Berita berhasil dihapus',
             'data' => new NewsDetailResource($news->loadMissing(['writer:id,name', 'category:id,name']))

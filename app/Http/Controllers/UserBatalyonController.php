@@ -6,6 +6,7 @@ use App\Models\UserBatalyon;
 use App\Http\Requests\StoreUserBatalyonRequest;
 use App\Http\Requests\UpdateUserBatalyonRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserBatalyonController extends Controller
 {
@@ -21,19 +22,21 @@ class UserBatalyonController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreUserBatalyonRequest $request)
+    public function store(Request $request)
     {
         $request->validate([
+            'name' => 'required|max:255',
             'korwil' => 'required|max:255',
             'jabatan' => 'required',
             'dpc' => 'required|max:255',
         ]);
 
         $userBatalyon = UserBatalyon::create([
+            'name' => $request->name,
             'korwil' => $request->korwil,
             'jabatan' => $request->jabatan,
             'dpc' => $request->dpc,
-            // 'user_id' => Auth::user()->id,
+            'user_id' => Auth::user()->id,
         ]);
 
         return response()->json([

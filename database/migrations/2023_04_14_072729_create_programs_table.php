@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_batalyons', function (Blueprint $table) {
+        Schema::create('programs', function (Blueprint $table) {
             $table->id();
-            $table->enum('korwil', ['Jatim'])->default('Jatim')->nullable();
-            $table->string('jabatan');
-            $table->string('dpc');
+            $table->string('title');
+            $table->text('content');
+            $table->string('image');
             $table->unsignedBigInteger('user_id')->default(0);
-            $table->unsignedBigInteger('batalyon_id')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('batalyon_id')->references('id')->on('batalyons')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_batalyons');
+        Schema::dropIfExists('programs');
     }
 };

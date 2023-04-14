@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('desc');
             $table->date('date');
             $table->string('file');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('batalyon_id');
+            $table->unsignedBigInteger('user_id')->default(0);
+            $table->unsignedBigInteger('batalyon_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

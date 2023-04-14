@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_batalyons', function (Blueprint $table) {
+        Schema::create('user_batalyons', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->enum('korwil', ['Jatim'])->default('Jatim')->nullable();
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users_batalyons');
+        Schema::dropIfExists('user_batalyons');
     }
 };

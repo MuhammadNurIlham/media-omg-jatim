@@ -41,7 +41,7 @@ class CategoriesController extends Controller
 
         $category = Categories::create([
             'name' => $request->name,
-            'user_id' => Auth::user()->id,
+            // 'user_id' => Auth::user()->id,
         ]);
 
         return response()->json($category);
@@ -74,21 +74,5 @@ class CategoriesController extends Controller
             'message' => 'Category berhasil dihapus',
             'data' => ($categories)
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Categories $categories)
-    {
-        //
     }
 }
